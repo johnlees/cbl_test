@@ -8,3 +8,14 @@ edition = "2021"
 [dependencies]
 cbl = { git = "https://github.com/imartayan/CBL.git" }
 needletail = "*"
+
+[profile.dev]
+opt-level = 1
+lto = "thin"
+incremental = true
+
+[profile.release]
+opt-level = 3
+lto = "fat"
+panic = "abort"
+incremental = true
