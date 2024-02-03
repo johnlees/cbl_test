@@ -1,6 +1,8 @@
 use cbl::CBL;
 use needletail::parse_fastx_file;
+use needletail::Sequence;
 use cbl::kmer::IntKmer;
+use cbl::kmer::Kmer;
 
 // define the parameters K and T
 const K: usize = 25;
