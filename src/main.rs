@@ -1,6 +1,6 @@
 use cbl::CBL;
 use needletail::parse_fastx_file;
-use std::env::args;
+use cbl::kmer::IntKmer;
 
 // define the parameters K and T
 const K: usize = 25;
@@ -15,6 +15,7 @@ fn main() {
     let mut cnt = 0;
     while let Some(record) = reader.next() {
         let seqrec = record.expect("Invalid record");
+        let rc = seqrec.reverse_complement();
         for (_, kmer, _) in seqrec.canonical_kmers(K, &rc) {
             let int_kmer = IntKmer::<K, T>::from_nucs(kmer);
             if cbl.contains(int_kmer) {
